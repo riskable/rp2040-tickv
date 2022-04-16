@@ -1,0 +1,62 @@
+[package]
+name = "rp2040-tickv"
+version = "0.1.0"
+edition = "2021"
+description = "TicKV implementation for RP2040 hardware"
+license     = "Apache-2.0"
+readme      = "README.md"
+categories  = ["embedded", "no-std"]
+keywords    = ["rp2040", "pico"]
+exclude     = [
+    ".gitignore",
+    "target/*"
+]
+
+[dependencies]
+cortex-m = "0.7"
+rp2040-hal = "0.4"
+embedded-hal ="0.2"
+
+# Need this until it gets added to crates.io:
+[dependencies.tickv]
+git = "https://github.com/tock/tock.git"
+rev = "f7712a97742d9c9a35e547bfc9e0776869830fe1"
+
+[dev-dependencies]
+cortex-m = "0.7"
+cortex-m-rt = "0.7"
+rp2040-hal = { version="0.4", features=["rt"] }
+embedded-hal = { version = "0.2", features = ["unproven"] }
+embedded-time = "0.12"
+defmt = "0.3"
+defmt-rtt = "0.3"
+panic-probe = { version = "0.3", features = ["print-defmt"] }
+rp2040-boot2 = "0.2"
+siphasher = "0.3"
+
+[dev-profile.dev]
+codegen-units = 1
+debug = 2
+debug-assertions = true
+incremental = false
+lto = 'fat'
+opt-level = 1
+overflow-checks = true
+
+[dev-profile.release]
+codegen-units = 1
+debug = 2
+debug-assertions = false
+incremental = false
+lto = 'fat'
+opt-level = 3
+overflow-checks = false
+
+[profile.release]
+codegen-units = 1
+debug = 2
+debug-assertions = false
+incremental = false
+lto = 'fat'
+opt-level = 2
+overflow-checks = false
