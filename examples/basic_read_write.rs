@@ -131,7 +131,7 @@ fn main() -> ! {
     let mut hasher = SipHasher::new();
     MAIN_KEY.hash(&mut hasher);
     info!("Initializing TicKV storage...");
-    let _ = tickv.initalise(hasher.finish()).unwrap();
+    let _ = tickv.initialise(hasher.finish()).unwrap();
     // Collect the garbage in case of subsequent calls to ensure there's always
     // room to store our four test keys/values:
     tickv.garbage_collect().unwrap();

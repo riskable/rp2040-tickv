@@ -20,7 +20,7 @@ embedded-hal ="0.2"
 # Need this until it gets added to crates.io:
 [dependencies.tickv]
 git = "https://github.com/tock/tock.git"
-rev = "f7712a97742d9c9a35e547bfc9e0776869830fe1"
+rev = "14f4504cf1f59d085010fbab9fa4056ac9ea9caf"
 
 [dev-dependencies]
 cortex-m = "0.7"
