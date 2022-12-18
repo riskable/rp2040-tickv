@@ -22,7 +22,6 @@ use cortex_m::delay::Delay;
 use cortex_m_rt::entry;
 use defmt::*;
 use defmt_rtt as _;
-use embedded_time::fixed_point::FixedPoint;
 use hal::{
     clocks::{init_clocks_and_plls, Clock},
     pac, rom_data,
@@ -37,7 +36,7 @@ use tickv::{ErrorCode, TicKV, MAIN_KEY};
 use rp2040_tickv;
 
 // How big is your flash? Default for this example is 2MiB
-pub const FLASH_SIZE_MBYTES: u32 = 2;
+pub const FLASH_SIZE_MBYTES: u32 = 1;
 // How much space to use for this test?
 // SECTOR_SIZE is 4096 so 16*4096 is 64KiB:
 pub const STORAGE_SIZE: u32 = 16 * rp2040_tickv::SECTOR_SIZE as u32;
@@ -104,7 +103,7 @@ fn main() -> ! {
     .ok()
     .unwrap();
 
-    let mut delay = Delay::new(core.SYST, clocks.system_clock.freq().integer());
+    let mut delay = Delay::new(core.SYST, clocks.system_clock.freq().raw());
     let key_name1 = b"test1";
     let key_name2 = b"test2";
     let key_name3 = b"test3";
