@@ -22,7 +22,6 @@ use cortex_m::delay::Delay;
 use cortex_m_rt::entry;
 use defmt::*;
 use defmt_rtt as _;
-use embedded_time::fixed_point::FixedPoint;
 use hal::{
     clocks::{init_clocks_and_plls, Clock},
     pac, rom_data,
@@ -104,7 +103,7 @@ fn main() -> ! {
     .ok()
     .unwrap();
 
-    let mut delay = Delay::new(core.SYST, clocks.system_clock.freq().integer());
+    let mut delay = Delay::new(core.SYST, clocks.system_clock.freq().raw());
     let key_name1 = b"test1";
     let key_name2 = b"test2";
     let key_name3 = b"test3";
