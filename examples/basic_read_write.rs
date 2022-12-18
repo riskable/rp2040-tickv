@@ -36,7 +36,7 @@ use tickv::{ErrorCode, TicKV, MAIN_KEY};
 use rp2040_tickv;
 
 // How big is your flash? Default for this example is 2MiB
-pub const FLASH_SIZE_MBYTES: u32 = 1;
+pub const FLASH_SIZE_MBYTES: u32 = 2;
 // How much space to use for this test?
 // SECTOR_SIZE is 4096 so 16*4096 is 64KiB:
 pub const STORAGE_SIZE: u32 = 16 * rp2040_tickv::SECTOR_SIZE as u32;
